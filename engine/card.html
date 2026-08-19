@@ -4,74 +4,82 @@
 @font-face{font-family:'Inter';src:url('Inter-var.ttf') format('truetype');font-weight:100 900;}
 @font-face{font-family:'JBMono';src:url('JetBrainsMono-var.ttf') format('truetype');font-weight:100 800;}
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden}
-body{background:#081A2E;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
-.stage{position:relative;width:1600px;height:900px;overflow:hidden}
+html,body{width:1240px;height:1754px;overflow:hidden}
+body{background:#FFFFFF;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+.page{position:relative;width:1240px;height:1754px;overflow:hidden;background:#FFFFFF}
 
-.glow-a{position:absolute;width:1150px;height:1150px;right:-380px;top:-430px;border-radius:50%;
-  background:radial-gradient(circle,rgba(98,95,237,.40) 0%,rgba(98,95,237,.12) 42%,rgba(98,95,237,0) 68%)}
-.glow-b{position:absolute;width:860px;height:860px;left:-330px;bottom:-430px;border-radius:50%;
-  background:radial-gradient(circle,rgba(91,247,207,.17) 0%,rgba(93,185,219,.08) 45%,rgba(93,185,219,0) 70%)}
-.grid{position:absolute;inset:0;opacity:.05;
-  background-image:linear-gradient(rgba(143,163,177,1) 1px,transparent 1px),linear-gradient(90deg,rgba(143,163,177,1) 1px,transparent 1px);
-  background-size:64px 64px}
-.hairline{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(135deg,#625FED 0%,#5DB9DB 100%)}
+.topbar{position:absolute;top:0;left:0;right:0;height:10px;background:linear-gradient(135deg,#625FED 0%,#5DB9DB 100%)}
+.wash{position:absolute;right:-260px;top:-260px;width:820px;height:820px;border-radius:50%;
+  background:radial-gradient(circle,rgba(98,95,237,.10) 0%,rgba(93,185,219,.05) 45%,rgba(255,255,255,0) 70%)}
+.wash2{position:absolute;left:-240px;bottom:-300px;width:720px;height:720px;border-radius:50%;
+  background:radial-gradient(circle,rgba(91,247,207,.16) 0%,rgba(93,185,219,.05) 48%,rgba(255,255,255,0) 72%)}
+/* isometric layer motif, mint fill only, bottom right */
+.iso{position:absolute;right:-90px;bottom:-120px;width:460px;height:460px;opacity:.5}
+.iso i{position:absolute;left:50%;top:50%;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:44px;
+  border:3px solid rgba(93,185,219,.30);transform:rotate(45deg) scaleY(.56)}
+.iso i:nth-child(1){transform:rotate(45deg) scaleY(.56) translate(-54px,-54px);border-color:rgba(98,95,237,.22)}
+.iso i:nth-child(3){transform:rotate(45deg) scaleY(.56) translate(54px,54px);border-color:rgba(91,247,207,.55)}
 
-/* isometric layer motif, bottom-left, behind text */
-.iso{position:absolute;left:-140px;bottom:-190px;width:520px;height:520px;opacity:.20}
-.iso i{position:absolute;left:50%;top:50%;width:320px;height:320px;margin:-160px 0 0 -160px;border-radius:46px;
-  border:3px solid #5DB9DB;transform:rotate(45deg) scaleY(.56)}
-.iso i:nth-child(1){transform:rotate(45deg) scaleY(.56) translate(-58px,-58px);border-color:#625FED}
-.iso i:nth-child(3){transform:rotate(45deg) scaleY(.56) translate(58px,58px);border-color:#5BF7CF}
+.content{position:absolute;inset:0;padding:84px 88px 72px 88px;display:flex;flex-direction:column}
 
-.content{position:absolute;inset:0;padding:58px 74px 54px 74px;display:flex;flex-direction:column}
-
-.hdr{display:flex;align-items:center;justify-content:space-between}
+/* header */
+.hdr{display:flex;align-items:center;justify-content:space-between;padding-bottom:34px;border-bottom:1px solid rgba(11,34,58,.12)}
 .lock{display:flex;align-items:center;gap:16px}
-.lock img{height:48px;width:auto;display:block}
-.wm{font-weight:600;font-size:23px;line-height:1.12;letter-spacing:-.012em;color:#fff}
-.beat{font-family:'JBMono',monospace;font-weight:600;font-size:16px;letter-spacing:.19em;color:#5BF7CF;
-  border:1px solid rgba(91,247,207,.34);border-radius:999px;padding:9px 21px;background:rgba(91,247,207,.06);text-transform:uppercase;white-space:nowrap}
+.lock img{height:52px;width:auto;display:block}
+.wm{font-weight:600;font-size:25px;line-height:1.12;letter-spacing:-.012em;color:#0B223A}
+.beat{font-family:'JBMono',monospace;font-weight:600;font-size:15px;letter-spacing:.18em;color:#625FED;
+  border:1.5px solid rgba(98,95,237,.34);border-radius:999px;padding:9px 20px;background:rgba(98,95,237,.05);
+  text-transform:uppercase;white-space:nowrap}
 
-.body{flex:1;display:flex;align-items:center;gap:60px;padding-top:8px}
-.left{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
-.kicker{font-family:'JBMono',monospace;font-size:15px;letter-spacing:.24em;color:#5DB9DB;text-transform:uppercase;margin-bottom:22px}
-h1{font-weight:700;font-size:90px;line-height:1.05;letter-spacing:-.024em;color:#fff;margin-bottom:24px}
-h1 .g{background:linear-gradient(105deg,#5BF7CF 0%,#5DB9DB 68%,#7E7BF0 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{font-size:27px;line-height:1.44;color:rgba(255,255,255,.80);max-width:800px}
-.pull{margin-top:34px;padding-left:22px;border-left:3px solid #5BF7CF;max-width:800px}
-.pull p{font-size:23px;line-height:1.38;color:rgba(255,255,255,.93);font-weight:500;font-style:italic}
+/* body */
+.body{flex:1;display:flex;flex-direction:column;justify-content:flex-start;padding:44px 0 30px 0}
+.kicker{font-family:'JBMono',monospace;font-size:16px;letter-spacing:.24em;color:#5DB9DB;text-transform:uppercase;margin-bottom:26px}
+h1{font-weight:700;font-size:82px;line-height:1.04;letter-spacing:-.026em;color:#0B223A;margin-bottom:28px}
+h1 .g{background:linear-gradient(135deg,#625FED 0%,#5DB9DB 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:28px;line-height:1.42;color:rgba(11,34,58,.82);font-weight:400}
+.secs{margin-top:40px;display:flex;flex-direction:column;flex:1;justify-content:space-evenly;gap:24px}
+.sec .lab{font-family:'JBMono',monospace;font-size:15px;letter-spacing:.16em;color:#625FED;font-weight:600;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:baseline;gap:12px}
+.sec .lab .num{color:rgba(11,34,58,.28);font-size:15px}
+.sec p{font-size:21px;line-height:1.5;color:rgba(11,34,58,.80)}
+.cta{margin-top:auto;display:flex;align-items:center;gap:20px;padding:26px 30px;border:1.5px solid rgba(98,95,237,.28);border-radius:16px;background:linear-gradient(135deg,rgba(98,95,237,.045),rgba(93,185,219,.045))}
+.cta .dot{width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,#625FED,#5BF7CF);flex-shrink:0}
+.cta p{font-size:22px;line-height:1.4;color:#0B223A;font-weight:500}
+.pull{margin-top:22px;padding:28px 32px;background:#F0F4F8;border-left:5px solid #5BF7CF;border-radius:0 14px 14px 0}
+.pull p{font-size:26px;line-height:1.38;color:#0B223A;font-weight:500;font-style:italic}
+.pull .attr{font-family:'JBMono',monospace;font-style:normal;font-size:15px;color:rgba(11,34,58,.55);margin-top:12px;letter-spacing:.04em}
 
-.rail{width:342px;flex-shrink:0;display:flex;flex-direction:column;gap:18px}
-.stat{position:relative;background:rgba(13,42,72,.62);border:1px solid rgba(93,185,219,.26);border-radius:20px;padding:26px 28px;overflow:hidden}
-.stat:before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#625FED,#5DB9DB)}
-.stat .n{font-family:'JBMono',monospace;font-weight:700;font-size:60px;line-height:1;color:#5BF7CF;letter-spacing:-.03em}
-.stat .l{font-size:17px;line-height:1.34;color:rgba(255,255,255,.74);margin-top:11px}
-.stat.alt .n{color:#5DB9DB}
-.stat.alt:before{background:linear-gradient(180deg,#5DB9DB,#5BF7CF)}
+/* stat row */
+.rail{display:flex;gap:18px;margin-top:38px}
+.stat{flex:1;position:relative;background:#FFFFFF;border:1.5px solid rgba(11,34,58,.12);border-radius:18px;padding:26px 24px;overflow:hidden}
+.stat:before{content:'';position:absolute;left:0;top:0;right:0;height:5px;background:linear-gradient(135deg,#625FED,#5DB9DB)}
+.stat.alt:before{background:linear-gradient(135deg,#5DB9DB,#5BF7CF)}
+.stat .n{font-family:'JBMono',monospace;font-weight:700;font-size:56px;line-height:1;color:#625FED;letter-spacing:-.035em;margin-top:8px}
+.stat.alt .n{color:#0B223A}
+.stat .l{font-size:17px;line-height:1.34;color:rgba(11,34,58,.66);margin-top:14px}
 
-.ftr{display:flex;align-items:flex-end;justify-content:space-between;border-top:1px solid rgba(143,163,177,.20);padding-top:24px}
-.src{font-family:'JBMono',monospace;font-size:15px;color:rgba(143,163,177,.95);letter-spacing:.03em}
-.src b{color:rgba(255,255,255,.92);font-weight:600}
-.site{font-family:'JBMono',monospace;font-size:18px;color:#5DB9DB;letter-spacing:.05em}
+/* footer */
+.ftr{display:flex;align-items:flex-end;justify-content:space-between;border-top:1px solid rgba(11,34,58,.12);padding-top:28px}
+.src{font-family:'JBMono',monospace;font-size:15px;color:rgba(11,34,58,.52);letter-spacing:.02em;max-width:760px;line-height:1.4}
+.src b{color:#0B223A;font-weight:600}
+.site{font-family:'JBMono',monospace;font-size:19px;color:#625FED;letter-spacing:.05em;white-space:nowrap}
 </style></head>
-<body><div class="stage">
-  <div class="glow-a"></div><div class="glow-b"></div><div class="grid"></div>
+<body><div class="page">
+  <div class="wash"></div><div class="wash2"></div>
   <div class="iso"><i></i><i></i><i></i></div>
-  <div class="hairline"></div>
+  <div class="topbar"></div>
   <div class="content">
     <div class="hdr">
       <div class="lock"><img src="mark.svg"><div class="wm">Cascade<br>Clarity</div></div>
       <div class="beat" id="beat"></div>
     </div>
     <div class="body">
-      <div class="left">
-        <div class="kicker" id="kicker"></div>
-        <h1 id="head"></h1>
-        <div class="sub" id="sub"></div>
-        <div class="pull" id="pullwrap" style="display:none"><p id="pull"></p></div>
-      </div>
+      <div class="kicker" id="kicker"></div>
+      <h1 id="head"></h1>
+      <div class="sub" id="sub"></div>
       <div class="rail" id="rail"></div>
+      <div class="secs" id="secs"></div>
+      <div class="cta" id="ctawrap" style="display:none"><div class="dot"></div><p id="cta"></p></div>
+      <div class="pull" id="pullwrap" style="display:none"><p id="pull"></p><div class="attr">Cascade Clarity</div></div>
     </div>
     <div class="ftr"><div class="src" id="src"></div><div class="site">cascadeclarity.ai</div></div>
   </div>
@@ -85,7 +93,18 @@ document.getElementById('src').innerHTML      = 'Source: <b>' + D.sourceName + '
 let h = D.headline;
 if (D.gradientPhrase && h.includes(D.gradientPhrase)) h = h.replace(D.gradientPhrase, '<span class="g">' + D.gradientPhrase + '</span>');
 document.getElementById('head').innerHTML = h;
+if (D.cta) { document.getElementById('ctawrap').style.display='flex'; document.getElementById('cta').textContent = D.cta; }
 if (D.pullQuote) { document.getElementById('pullwrap').style.display='block'; document.getElementById('pull').textContent = '“' + D.pullQuote + '”'; }
+const secs = document.getElementById('secs');
+(D.sections||[]).slice(0,3).forEach((sec,i)=>{
+  const d=document.createElement('div'); d.className='sec';
+  const lab=document.createElement('div'); lab.className='lab';
+  const num=document.createElement('span'); num.className='num'; num.textContent=String(i+1).padStart(2,'0');
+  const t=document.createElement('span'); t.textContent=sec.label;
+  lab.appendChild(num); lab.appendChild(t);
+  const p=document.createElement('p'); p.textContent=sec.body;
+  d.appendChild(lab); d.appendChild(p); secs.appendChild(d);
+});
 const rail = document.getElementById('rail');
 (D.stats||[]).slice(0,3).forEach((s,i)=>{
   const d=document.createElement('div'); d.className='stat'+(i%2?' alt':'');
@@ -93,8 +112,9 @@ const rail = document.getElementById('rail');
   const l=document.createElement('div'); l.className='l'; l.textContent=s.label;
   d.appendChild(n); d.appendChild(l); rail.appendChild(d);
 });
-// autofit: shrink headline, then subhead, until the left column fits
-const left=document.querySelector('.left'), hd=document.getElementById('head'), sb=document.getElementById('sub');
-let fs=90; while(left.scrollHeight>left.clientHeight && fs>42){ fs-=3; hd.style.fontSize=fs+'px'; }
-let ss=27; while(left.scrollHeight>left.clientHeight && ss>19){ ss-=1; sb.style.fontSize=ss+'px'; }
+// autofit the centre block
+const bd=document.querySelector('.body'), hd=document.getElementById('head'), sb=document.getElementById('sub');
+let fs=82; while(bd.scrollHeight>bd.clientHeight && fs>46){ fs-=3; hd.style.fontSize=fs+'px'; }
+let ss=28; while(bd.scrollHeight>bd.clientHeight && ss>19){ ss-=1; sb.style.fontSize=ss+'px'; }
+let ps=21; while(bd.scrollHeight>bd.clientHeight && ps>15){ ps-=1; document.querySelectorAll('.sec p').forEach(e=>e.style.fontSize=ps+'px'); }
 </script></body></html>
